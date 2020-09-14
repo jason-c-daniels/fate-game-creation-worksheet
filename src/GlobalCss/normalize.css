@@ -432,10 +432,13 @@ textarea:focus {
     margin: 0;
 }
 
+input::placeholder,
+textarea::placeholder,
 ::placeholder {
-    opacity: 50%;
     font-weight: normal;
+    color: var(--mdc-theme-text-hint-on-background);
 }
+
 
 .flex-column {
     display: flex;

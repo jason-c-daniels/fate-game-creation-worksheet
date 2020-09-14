@@ -195,7 +195,7 @@
                           containerStyles="height:92vh;color:#333333; background-color:#EFEFEF;"/>
             </div>
         {:else}
-            <div id="content">
+            <div id="content" style="padding:2rem;">
                 <Worksheet bind:gameWorksheet={gameWorksheet}/>
             </div>
         {/if}
