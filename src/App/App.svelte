@@ -209,7 +209,7 @@
                           containerStyles="height:92vh;color:#333333; background-color:#EFEFEF;"/>
             </div>
         {:else}
-            <div id="content" style="padding:2rem;">
+            <div id="content" style="padding:0">
                 {#if activeIndex === 0}
                     <Worksheet bind:gameWorksheet={gameWorksheet}/>
                 {:else if activeIndex === 1}
