@@ -5,21 +5,28 @@
     import '@material/mwc-top-app-bar-fixed';
     import '@material/mwc-icon-button';
     import '@material/mwc-drawer';
+    import '@material/mwc-tab';
+    import '@material/mwc-tab-bar';
     import '@material/mwc-icon';
-    import '@material/mwc-list';
-    import '@material/mwc-list/mwc-list-item';
-    import '@material/mwc-list/mwc-check-list-item';
-    import '@material/mwc-list/mwc-radio-list-item';
     import '@material/mwc-snackbar';
     import downloadToClient from 'file-saver';
     import Dropzone from "svelte-file-dropzone";
     import Worksheet from "../components/Worksheet";
     import getNewGameInfo from "../model/gameInfo";
     import LocalStorageController from '../controllers/localStorageController'
+    import Markdown from "../components/shared/Markdown";
 
     export let appSettings = {applicationName: "WARNING: Please pass appSettings from within main.js props."};
+    let activeIndex;
+    let aboutMarkdown;
+    let snackBarElement, tabBarElement;
 
-    let snackBarElement;
+    fetch("./md/About.md").then((response) => response.text().then((data) => aboutMarkdown = data));
+
+    function handleTabActivated(e) {
+        activeIndex = tabBarElement.activeIndex;
+        activeSection = activeIndex === 0 ? "Character Sheet" : "Rules";
+    }
 
     let disabled = "";
     let showLoadPane = false;
@@ -62,7 +69,7 @@
                      like maybe a JSON DTD? */
 
             // for now try accessing things in a way that will throw an exception.
-            let _ =  worksheet.name.toString();
+            let _ = worksheet.name.toString();
             _ = worksheet.setting.toString();
             _ = worksheet.currentIssues.toString();
             _ = worksheet.impendingIssues.toString();
@@ -110,6 +117,7 @@
 
     function handleNewGameWorksheetClicked() {
         gameWorksheet = getNewGameInfo();
+        activeIndex = 0;
         showSnackBar("Created new worksheet.");
     }
 
@@ -124,6 +132,7 @@
                 if (validateGameWorksheet(worksheet)) {
                     setTimeout(() => showSnackBar("Worksheet loaded."), 250);
                     gameWorksheet = worksheet;
+                    activeIndex = 0;
                 }
             } catch (err) {
                 console.log(err);
@@ -178,6 +187,11 @@
 <main class="noprint">
     <mwc-top-app-bar-fixed>
         <div slot="title"><span>{appSettings.applicationName}</span></div>
+        <mwc-tab-bar slot="actionItems" style="display: inline-block" bind:this={tabBarElement}
+                     activeIndex={activeIndex} on:MDCTabBar:activated={handleTabActivated}>
+            <mwc-tab label="Worksheet"></mwc-tab>
+            <mwc-tab label="About"></mwc-tab>
+        </mwc-tab-bar>
         <mwc-icon-button icon="note_add" slot="actionItems" on:click={handleNewGameWorksheetClicked}
                          {disabled}></mwc-icon-button>
         {#if showLoadPane}
@@ -196,7 +210,17 @@
             </div>
         {:else}
             <div id="content" style="padding:2rem;">
-                <Worksheet bind:gameWorksheet={gameWorksheet}/>
+                {#if activeIndex === 0}
+                    <Worksheet bind:gameWorksheet={gameWorksheet}/>
+                {:else if activeIndex === 1}
+                    {#if aboutMarkdown}
+                        <Markdown columns="1" markdown={aboutMarkdown}/>
+                    {/if}
+                {:else}
+                    <div class="page">
+                        <h3>TBD/Coming Soon</h3>
+                    </div>
+                {/if}
             </div>
         {/if}
         <mwc-snackbar labelText="{snackBarText}" bind:this={snackBarElement}>

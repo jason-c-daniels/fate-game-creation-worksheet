@@ -9,8 +9,5 @@
 h2 {display: inline-block; margin:0;}
 h2 {
     margin-top:0.9rem;
-}
-
-.logo svg path {
-    fill: black;
+    margin-left: 1rem;
 }
