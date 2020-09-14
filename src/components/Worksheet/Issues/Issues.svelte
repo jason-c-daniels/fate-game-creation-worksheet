@@ -8,7 +8,7 @@
     export let impendingIssues;
 </script>
 
-<Section title="Issues" props={{style:"margin-top:0.75rem;"}}>
+<Section title="Issues" props={{style:"margin-top:0.5rem;"}}>
     <div class="flex-row">
     <textarea id="current-issues"
               class="flex-item-1"

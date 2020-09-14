@@ -16,7 +16,7 @@
     ]
 </script>
 
-<Section title="Faces and Places" props={{style:"margin-top:0.75rem;"}}>
+<Section title="Faces and Places" props={{style:"margin-top:0.5rem;"}}>
     <div class="flex-row">
         <FaceOrPlace bind:name={facesAndPlaces[0].name} bind:issuesOrAspects={facesAndPlaces[0].issuesOrAspects} props={{class:"gap"}}/>
         <FaceOrPlace bind:name={facesAndPlaces[1].name} bind:issuesOrAspects={facesAndPlaces[1].issuesOrAspects} props={{class:"gap"}}/>

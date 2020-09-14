@@ -351,12 +351,6 @@ template {
     display: none;
 }
 
-
-/**
-  moved from the original global-properties.css.
-  TODO: Will need to dedupe and fix entries this is overriding from above.
-*/
-
 html, body {
     position: relative;
     width: 100%;

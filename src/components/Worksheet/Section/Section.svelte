@@ -11,7 +11,7 @@
 </script>
 
 <div class="section" {...props}>
-    <div class="header" style="padding-left:0.15in">
+    <div class="header" style="padding-left:0.1in">
         <span >{title}</span>
     </div>
     <div class="content" style="padding-left:{indent}">

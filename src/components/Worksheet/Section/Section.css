@@ -20,6 +20,19 @@
     padding-top: 0;
     text-transform: uppercase;
     margin-bottom: 0.5rem;
+    --notchSize: 9px;
+
+    clip-path:
+            polygon(
+                    0% var(--notchSize),                  /*UL*/
+                    var(--notchSize) 0%,
+                    100%  0%,     /*UR*/
+                    100%  0%,
+                    100% calc(100% - var(--notchSize)),   /*LR*/
+                    calc(100% - var(--notchSize)) 100%,
+                    0% 100%,                /*LL*/
+                    0% 100%
+            );
 }
 
 .header span {

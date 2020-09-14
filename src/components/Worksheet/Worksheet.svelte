@@ -66,7 +66,7 @@
     <GameInfo bind:name={gameInfo.name} bind:setting={gameInfo.setting}  />
     <Issues bind:currentIssues={gameInfo.currentIssues} bind:impendingIssues={gameInfo.impendingIssues} />
     <FacesAndPlaces bind:facesAndPlaces={gameInfo.facesAndPlaces} />
-    <div class="flex-row" style="margin-top: 0.75rem; margin-bottom: 0.5rem">
+    <div class="flex-row" style="margin-top: 0.5rem; margin-bottom: 0.1rem">
         <Dials  bind:dials={gameInfo.dials} props={{class:"flex-item-1", style:"margin-right:0.5rem;"}}  />
         <Skills bind:skills={gameInfo.skills} props={{class:"flex-item-1"}} />
     </div>

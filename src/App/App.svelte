@@ -14,24 +14,10 @@
 
     export let appSettings = {applicationName: "WARNING: Please pass appSettings from within main.js props."};
 
-    let drawerElement; // bind to the drawerElement component so we can open and close it.
-
-    let orientationListElement, pageSizeListElement;
     let largePageHeading = true, pageNumberOnly = true;
 
-
-    function handlePageHeadingSelected(e) {
-        console.log('handlePageHeadingSelected');
-        largePageHeading = orientationListElement.querySelectorAll('mwc-radio-list-item')[e.detail.index].value === 'largePageHeading';
-    }
-
-    function handleFooterOptionSelected(e) {
-        console.log('handleFooterOptionSelected');
-        pageNumberOnly = pageSizeListElement.querySelectorAll('mwc-radio-list-item')[e.detail.index].value === 'pageNumberOnly';
-    }
-
     function printIt() {
-        print();
+        setTimeout(print,500);
     }
 
 </script>
@@ -50,52 +36,17 @@
 <GlobalCss/>
 
 <main class="noprint">
-    <!-- this section is what the user interacts with to edit their data. It'll contain
-    all sorts of UI controls that you do NOT want to printout. -->
-    <mwc-drawer hasHeader type="modal" bind:this={drawerElement}>
-        <span slot="title">Manage Notes</span>
-        <span slot="subtitle">Manage the entire list</span>
-        <div>
-            <!-- Drawer Content -->
-            <mwc-list>
-                <mwc-list-item graphic="avatar">
-                    <span>Clear Notes</span>
-                    <mwc-icon slot="graphic">cancel</mwc-icon>
-                </mwc-list-item>
-                <mwc-list-item graphic="avatar">
-                    <span>avatar item</span>
-                    <mwc-icon slot="graphic">folder</mwc-icon>
-                </mwc-list-item>
-            </mwc-list>
-            <mwc-list bind:this={orientationListElement} on:selected={handlePageHeadingSelected} >
-                <li role="separator" class="drawer-header"><h3>Print Options</h3></li>
-                <li divider role="separator" style="margin-left: 16px;"></li>
-                <mwc-radio-list-item selected="{!largePageHeading}" value="smallPageHeading">Small Page Header</mwc-radio-list-item>
-                <mwc-radio-list-item selected="{largePageHeading}" value="largePageHeading">Large Page Header</mwc-radio-list-item>
-            </mwc-list>
-            <mwc-list bind:this={pageSizeListElement} on:selected={handleFooterOptionSelected}>
-                <li divider role="separator" style="margin-left: 16px;"></li>
-                <mwc-radio-list-item group="c" selected="{!pageNumberOnly}" value="detailedFooter">Detailed Footer</mwc-radio-list-item>
-                <mwc-radio-list-item group="c" selected="{pageNumberOnly}" value="pageNumberOnly">Page Number Only</mwc-radio-list-item>
-            </mwc-list>
-        </div>
-        <div slot="appContent">
-            <mwc-top-app-bar-fixed>
-                <mwc-icon-button icon="menu" slot="navigationIcon"
-                                 on:click={()=>drawerElement.open = !drawerElement.open}></mwc-icon-button>
+    <mwc-top-app-bar-fixed>
                 <div slot="title"><span>{appSettings.applicationName}</span></div>
                 <mwc-icon-button icon="file_download" slot="actionItems"></mwc-icon-button>
                 <mwc-icon-button icon="file_upload" slot="actionItems"></mwc-icon-button>
                 <mwc-icon-button icon="print" slot="actionItems" on:click={printIt}></mwc-icon-button>
                 <div id="content" style="margin: 10pt;">
-                    <div>
+
                         <Worksheet />
 
-                    </div>
                 </div>
             </mwc-top-app-bar-fixed>
-        </div>
-    </mwc-drawer>
 </main>
 
 <main class="printme">
