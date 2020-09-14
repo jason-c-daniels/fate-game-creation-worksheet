@@ -1,0 +1,14 @@
+/** This is the style information for Worksheet.svelte */
+
+div {
+    margin-bottom: 0.5rem;
+}
+
+.gap {
+    margin-right: 0.5rem;
+}
+input {
+    flex-wrap: wrap;
+    height: 1.4rem;
+    width: 100%;
+}

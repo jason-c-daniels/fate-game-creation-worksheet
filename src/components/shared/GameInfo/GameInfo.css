@@ -1,0 +1,5 @@
+input[type=text]{
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}

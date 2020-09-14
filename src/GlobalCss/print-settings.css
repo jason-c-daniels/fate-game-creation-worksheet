@@ -1,0 +1,117 @@
+@media print {
+    ::-webkit-input-placeholder {
+        /* WebKit browsers */
+        color: transparent;
+    }
+
+    :-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: transparent;
+    }
+
+    ::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: transparent;
+    }
+
+    :-ms-input-placeholder {
+        /* Internet Explorer 10+ */
+        color: transparent;
+    }
+
+    input::placeholder {
+        color: transparent;
+    }
+
+    /* hide the spinners when printing. */
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+
+    ::-webkit-input-placeholder {
+        /* WebKit browsers */
+        color: transparent;
+    }
+    :-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: transparent;
+    }
+    ::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: transparent;
+    }
+    :-ms-input-placeholder {
+        /* Internet Explorer 10+ */
+        color: transparent;
+    }
+    textarea::-webkit-input-placeholder {
+        /* WebKit browsers */
+        color: transparent;
+    }
+    textarea:-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: transparent;
+    }
+    textarea::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: transparent;
+    }
+    textarea:-ms-input-placeholder {
+        /* Internet Explorer 10+ */
+        color: transparent;
+    }
+    textarea::placeholder {
+        color: transparent;
+    }
+
+    .noprint {
+        display: none !important;
+    }
+    .printme {
+        display: block !important;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .noprint {
+        display: none !important;
+        margin:0 !important;
+        padding:0 !important;
+        box-sizing: border-box !important;
+    }
+   .page {
+        box-shadow: none !important;
+    }
+}
+
+@page {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+.page {
+    width: 8.5in;
+    height: 11in;
+    padding: 0.25in 0.5in;
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-sizing: border-box;
+}
+
+.printme {
+    display: none;
+}
