@@ -11,4 +11,5 @@ input {
     flex-wrap: wrap;
     height: 1.4rem;
     width: 100%;
+    font-size: 1vw;
 }
