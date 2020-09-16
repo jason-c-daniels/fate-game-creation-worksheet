@@ -61,7 +61,7 @@
     }
 </script>
 
-<div class="page" >
+<div class="page">
     <LogoBar />
     <GameInfo bind:name={gameWorksheet.name} bind:setting={gameWorksheet.setting}  />
     <Issues bind:currentIssues={gameWorksheet.currentIssues} bind:impendingIssues={gameWorksheet.impendingIssues} />

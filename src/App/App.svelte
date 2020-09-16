@@ -14,14 +14,12 @@
     import Worksheet from "../components/Worksheet";
     import getNewGameInfo from "../model/gameInfo";
     import LocalStorageController from '../controllers/localStorageController'
-    import Markdown from "../components/shared/Markdown";
+    import About from '../components/About/About.md';
 
     export let appSettings = {applicationName: "WARNING: Please pass appSettings from within main.js props."};
     let activeIndex;
-    let aboutMarkdown;
-    let snackBarElement, tabBarElement;
 
-    fetch("./md/About.md").then((response) => response.text().then((data) => aboutMarkdown = data));
+    let snackBarElement, tabBarElement;
 
     function handleTabActivated(e) {
         activeIndex = tabBarElement.activeIndex;
@@ -213,9 +211,7 @@
                 {#if activeIndex === 0}
                     <Worksheet bind:gameWorksheet={gameWorksheet}/>
                 {:else if activeIndex === 1}
-                    {#if aboutMarkdown}
-                        <Markdown columns="1" markdown={aboutMarkdown}/>
-                    {/if}
+                        <About />
                 {:else}
                     <div class="page">
                         <h3>TBD/Coming Soon</h3>
